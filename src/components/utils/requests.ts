@@ -2,40 +2,23 @@ import axios from "axios";
 import { apiKey } from "../../assets/key";
 
 export const findPlayer = (
-  nick: string,
+  identifier: string,
   setResponse: (response: any) => void
 ) => {
-  const endpoints = [
-    `https://open.faceit.com/data/v4/search/players?nickname=${nick}`,
-    `https://open.faceit.com/data/v4/players?nickname=${nick}`,
-  ];
-  const requests = endpoints.map((url) =>
-    axios.get(url, {
-      headers: { Authorization: `Bearer ${apiKey}` },
-    })
-  );
-  axios.all(requests).then(
-    axios.spread((...responses) => {
-      const [data1, data2] = responses;
-      data1.data.items[0]["faceit_url"] = data2.data["faceit_url"];
-      data1.data.items[0]["faceit_elo"] = data2.data.games.cs2["faceit_elo"];
-      setResponse(data1.data);
-    })
-  );
+  const url = `http://localhost:3000/faceit/player/`;
+  axios.get(url, { params: { q: identifier } }).then((data) => {
+    setResponse(data.data);
+  });
 };
 
 export const getStats = (
   player_id: string,
   setResponse: (response: any) => void
 ) => {
-  axios
-    .get(
-      `https://open.faceit.com/data/v4/players/${player_id}/games/cs2/stats?limit=100`,
-      {
-        headers: { Authorization: `Bearer ${apiKey}` },
-      }
-    )
-    .then((data) => setResponse(data.data));
+  const url = `http://localhost:3000/faceit/stats/${player_id}`;
+  axios.get(url).then((data) => {
+    setResponse(data.data);
+  });
 };
 
 export const getMatch = (match_id: string) => {

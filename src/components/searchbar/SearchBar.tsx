@@ -22,8 +22,8 @@ export const SearchBar = () => {
   };
 
   useEffect(() => {
-    if (response?.items) {
-      setProfile(response.items[0]);
+    if (response) {
+      setProfile(response);
     }
   }, [response, setProfile]);
 

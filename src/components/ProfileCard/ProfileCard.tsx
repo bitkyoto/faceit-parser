@@ -41,7 +41,7 @@ export const ProfileCard = () => {
     return null;
   }
 
-  const cs2Game = profile.games?.find((game: any) => game.name === "cs2");
+  const cs2Game = profile.games?.cs2;
   const lvl = cs2Game?.skill_level?.toString() || "1";
 
   const handleAvatarClick = () => {

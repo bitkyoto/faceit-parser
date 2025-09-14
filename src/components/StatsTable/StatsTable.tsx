@@ -1,4 +1,3 @@
-import React from "react";
 import { useStore } from "../zustand/store";
 import { getAdr, getAvg, getKd, getKr, getWinrate } from "../utils/utils";
 import {
@@ -34,7 +33,7 @@ export const StatsTable = () => {
           </TableHeader>
           <TableBody>
             <TableRow className="font-medium text-center">
-              <TableCell>{profile["faceit_elo"]}</TableCell>
+              <TableCell>{profile.games.cs2["faceit_elo"]}</TableCell>
               <TableCell>{getWinrate(games.items)}</TableCell>
               <TableCell>{getAvg(games.items)}</TableCell>
               <TableCell>{getKd(games.items)}</TableCell>
