@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { formatDate, formatResult } from "../utils/utils";
-import "./GameTable.css";
 import { useStore } from "../zustand/store";
 import {
   Table,

@@ -8,6 +8,7 @@
   border: 1px solid grey;
   padding: 10px 20px;
   border-radius: 20px;
+  height: 75px;
 }
 .searchbar__input {
   background-color: inherit;

@@ -28,3 +28,16 @@ export const getMatch = (match_id: string) => {
     })
     .then((data) => data.data["faceit_url"].replace("{lang}", "en"));
 };
+
+export const getStatsByMap = (
+  player_id: string,
+  setMapData: (data: any) => void
+) => {
+  return axios
+    .get(`http://localhost:3000/faceit/mapstats/${player_id}`)
+    .then((data) => {
+      console.log(data.data);
+      setMapData(data.data);
+    })
+    .catch((err) => console.log(err));
+};
