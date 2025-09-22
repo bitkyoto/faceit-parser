@@ -7,37 +7,57 @@ import {
   TableRow,
 } from "../ui/table";
 import { useStore } from "../zustand/store";
+type MapColumn = "Winrate" | "KD" | "KR" | "ADR" | "HS";
 export const MapTable = () => {
   const { mapStats } = useStore((store) => store);
-
+  const handleColors = (col: MapColumn, res: string) => {
+    if (col === "Winrate") {
+      return parseFloat(res) > 50 ? "text-green-400" : "text-red-500";
+    }
+    if (col === "KD") {
+      return parseFloat(res) >= 1 ? "text-green-400" : "text-red-500";
+    }
+    if (col === "KR") {
+      return parseFloat(res) >= 0.7 ? "text-green-400" : "text-red-500";
+    }
+    if (col === "ADR") {
+      return parseFloat(res) >= 70 ? "text-green-400" : "text-red-500";
+    }
+    return "";
+  };
   const renderStats = () => {
     if (!mapStats) {
       return (
         <TableRow>
-          <TableCell colSpan={5} className="text-center">
+          <TableCell colSpan={6} className="text-center">
             Нет данных
           </TableCell>
         </TableRow>
       );
     } else {
-      return mapStats.map((map) => (
-        <TableRow key={map.label}>
-          <TableCell className="text-center">{map.label}</TableCell>
-          <TableCell className="text-center">
+      return mapStats.map((map: any) => (
+        <TableRow key={map.label} className="text-center">
+          <TableCell>{`de_${map.label.toLowerCase()}`}</TableCell>
+          <TableCell>{map.stats["Matches"]}</TableCell>
+          <TableCell
+            className={handleColors("Winrate", map.stats["Win Rate %"])}
+          >
             {map.stats["Win Rate %"]}
           </TableCell>
-          <TableCell className="text-center">
+          <TableCell
+            className={handleColors("KD", map.stats["Average K/D Ratio"])}
+          >
             {map.stats["Average K/D Ratio"]}
           </TableCell>
-          <TableCell className="text-center">
+          <TableCell
+            className={handleColors("KR", map.stats["Average K/R Ratio"])}
+          >
             {map.stats["Average K/R Ratio"]}
           </TableCell>
-          <TableCell className="text-center">
+          <TableCell className={handleColors("ADR", map.stats.ADR)}>
             {map.stats.ADR}
           </TableCell>
-          <TableCell className="text-center">
-            {map.stats["Average Headshots %"]}
-          </TableCell>
+          <TableCell>{map.stats["Average Headshots %"]}</TableCell>
         </TableRow>
       ));
     }
@@ -49,6 +69,7 @@ export const MapTable = () => {
         <TableHeader>
           <TableRow>
             <TableHead className="text-center">Map</TableHead>
+            <TableHead className="text-center">Matches</TableHead>
             <TableHead className="text-center">Winrate %</TableHead>
             <TableHead className="text-center">Average K/D</TableHead>
             <TableHead className="text-center">Average K/R</TableHead>
