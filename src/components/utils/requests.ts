@@ -21,14 +21,6 @@ export const getStats = (
   });
 };
 
-export const getMatch = (match_id: string) => {
-  return axios
-    .get(`https://open.faceit.com/data/v4/matches/${match_id}`, {
-      headers: { Authorization: `Bearer ${apiKey}` },
-    })
-    .then((data) => data.data["faceit_url"].replace("{lang}", "en"));
-};
-
 export const getStatsByMap = (
   player_id: string,
   setMapData: (data: any) => void

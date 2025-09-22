@@ -37,7 +37,7 @@ export const GameTable = () => {
   };
   const handleMatchClick = async (matchId: string) => {
     try {
-      const url = await getMatch(matchId);
+      const url = `https://www.faceit.com/en/cs2/room/${matchId}`;
       if (url) {
         window.open(url, "_blank");
       }
