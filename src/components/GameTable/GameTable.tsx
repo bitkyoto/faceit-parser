@@ -17,7 +17,7 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "../ui/pagination";
-import { getMatch, getStats } from "../utils/requests";
+import { getStats } from "../utils/requests";
 
 type Column = "Result" | "Score" | "K/D";
 

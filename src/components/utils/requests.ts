@@ -1,5 +1,4 @@
 import axios from "axios";
-import { apiKey } from "../../assets/key";
 
 export const findPlayer = (
   identifier: string,
