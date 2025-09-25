@@ -1,6 +1,5 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Card, CardContent } from "../ui/card";
-import { StatsTable } from "../StatsTable/StatsTable";
 import { useStore } from "../zustand/store";
 import { getStats } from "../utils/requests";
 import lvl1 from "../../assets/1.png";
@@ -14,6 +13,7 @@ import lvl8 from "../../assets/8.png";
 import lvl9 from "../../assets/9.png";
 import lvl10 from "../../assets/10.png";
 import user from "../../assets/user.png";
+import { StatsTable } from "../StatsTable/StatsTable";
 
 const levelImages: Record<string, string> = {
   "1": lvl1,
@@ -29,11 +29,10 @@ const levelImages: Record<string, string> = {
 };
 
 export const ProfileCard = () => {
-  const { profile, setGames } = useStore((state) => state);
-
+  const { profile, setStats, stats } = useStore((state) => state);
   useEffect(() => {
-    if (profile) {
-      getStats(profile["player_id"], setGames);
+    if (profile && !stats) {
+      getStats(profile["player_id"], setStats);
     }
   }, [profile]);
 

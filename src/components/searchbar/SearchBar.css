@@ -18,3 +18,8 @@
 .searchbar__input:focus {
   outline: none;
 }
+.enemy_searchbar__container {
+  border: 1px solid grey;
+  border-radius: 20px;
+  padding: 10px 20px;
+}

@@ -17,7 +17,7 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "../ui/pagination";
-import { getStats } from "../utils/requests";
+import { getGames } from "../utils/requests";
 
 type Column = "Result" | "Score" | "K/D";
 
@@ -46,8 +46,8 @@ export const GameTable = () => {
     }
   };
   useEffect(() => {
-    if (profile) {
-      getStats(profile["player_id"], setGames);
+    if (profile && !games) {
+      getGames(profile["player_id"], setGames);
     }
   }, [profile]);
 
@@ -105,7 +105,7 @@ export const GameTable = () => {
     return null;
   }
   return (
-    <div className="dark border rounded-[10px] text-foreground text-center flex flex-col pb-2 gap-y-1">
+    <div className="dark border rounded-[10px] text-foreground text-center flex flex-col py-2 gap-y-1">
       <Table className="dark m-auto lg:w-200 max-w-4xl">
         <TableHeader>
           <TableRow>

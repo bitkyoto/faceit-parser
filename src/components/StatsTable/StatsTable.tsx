@@ -8,11 +8,10 @@ import {
   TableBody,
   TableCell,
 } from "../ui/table";
-
 export const StatsTable = () => {
-  const { games, profile } = useStore((state) => state);
+  const { profile, stats } = useStore((state) => state);
 
-  if (!games?.items) {
+  if (!stats || !profile) {
     return <div>Загрузка...</div>;
   }
 
@@ -34,11 +33,11 @@ export const StatsTable = () => {
           <TableBody>
             <TableRow className="font-medium text-center">
               <TableCell>{profile.games.cs2["faceit_elo"]}</TableCell>
-              <TableCell>{getWinrate(games.items)}</TableCell>
-              <TableCell>{getAvg(games.items)}</TableCell>
-              <TableCell>{getKd(games.items)}</TableCell>
-              <TableCell>{getKr(games.items)}</TableCell>
-              <TableCell>{getAdr(games.items)}</TableCell>
+              <TableCell>{stats.Winrate}</TableCell>
+              <TableCell>{stats.Avg}</TableCell>
+              <TableCell>{stats.KD}</TableCell>
+              <TableCell>{stats.KR}</TableCell>
+              <TableCell>{stats.ADR}</TableCell>
             </TableRow>
           </TableBody>
         </Table>
@@ -48,23 +47,23 @@ export const StatsTable = () => {
       <div className="md:hidden grid grid-cols-2 gap-2">
         <div className="bg-secondary p-2 rounded-lg text-center">
           <div className="text-sm text-muted-foreground">Winrate</div>
-          <div className="font-medium">{getWinrate(games.items)}%</div>
+          <div className="font-medium">{stats.Winrate}</div>
         </div>
         <div className="bg-secondary p-2 rounded-lg text-center">
           <div className="text-sm text-muted-foreground">Avg K.</div>
-          <div className="font-medium">{getAvg(games.items)}</div>
+          <div className="font-medium">{stats.Avg}</div>
         </div>
         <div className="bg-secondary p-2 rounded-lg text-center">
           <div className="text-sm text-muted-foreground">KD</div>
-          <div className="font-medium">{getKd(games.items)}</div>
+          <div className="font-medium">{stats.KD}</div>
         </div>
         <div className="bg-secondary p-2 rounded-lg text-center">
           <div className="text-sm text-muted-foreground">KR</div>
-          <div className="font-medium">{getKr(games.items)}</div>
+          <div className="font-medium">{stats.KR}</div>
         </div>
         <div className="bg-secondary p-2 rounded-lg text-center">
           <div className="text-sm text-muted-foreground">ADR</div>
-          <div className="font-medium">{getAdr(games.items)}</div>
+          <div className="font-medium">{stats.ADR}</div>
         </div>
       </div>
     </div>

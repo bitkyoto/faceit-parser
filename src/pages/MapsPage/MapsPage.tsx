@@ -1,18 +1,9 @@
-import { GameTable } from "@/components/GameTable/GameTable";
 import { MapTable } from "@/components/MapTable/MapTable";
 import { Navbar } from "@/components/Navbar/Navbar";
 import { ProfileCard } from "@/components/ProfileCard/ProfileCard";
-import { getStatsByMap } from "@/components/utils/requests";
-import { useStore } from "@/components/zustand/store";
-import { useEffect, useState } from "react";
+import React from "react";
 
-export const MainPage = () => {
-  const { profile, setMapStats, mapStats } = useStore((store) => store);
-  useEffect(() => {
-    if (profile && !mapStats) {
-      getStatsByMap(profile["player_id"], setMapStats);
-    }
-  }, [profile]);
+export const MapsPage = () => {
   return (
     <div className="flex flex-col items-center">
       <div className="w-full mt-4 flex flex-col gap-y-4">
@@ -21,7 +12,7 @@ export const MainPage = () => {
         </div>
         <div className="flex flex-col items-center gap-5 lg:flex-row lg:justify-center lg:items-start">
           <ProfileCard />
-          <GameTable />
+          <MapTable />
         </div>
       </div>
     </div>

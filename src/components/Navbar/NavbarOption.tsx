@@ -3,17 +3,11 @@ import type { ReactNode } from "react";
 
 interface NavbarOptionProps {
   title: string;
-  icon: ReactNode;
+  icon?: ReactNode;
   link?: string;
-  onClick?: any;
 }
 
-export const NavbarOption = ({
-  title,
-  icon,
-  link,
-  onClick,
-}: NavbarOptionProps) => {
+export const NavbarOption = ({ title, icon, link }: NavbarOptionProps) => {
   const navigate = useNavigate();
 
   return (
@@ -22,9 +16,6 @@ export const NavbarOption = ({
       onClick={() => {
         if (link) {
           navigate(link);
-        }
-        if (onClick) {
-          onClick();
         }
       }}
     >

@@ -4,6 +4,8 @@ import "./index.css";
 import { BrowserRouter, Route, Routes } from "react-router";
 import { StartPage } from "./pages/StartPage/StartPage.tsx";
 import { MainPage } from "./pages/MainPage.tsx/MainPage.tsx";
+import { CompPage } from "./pages/ComparisonPage/CompPage.tsx";
+import { MapsPage } from "./pages/MapsPage/MapsPage.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <BrowserRouter>
@@ -11,6 +13,8 @@ createRoot(document.getElementById("root")!).render(
       <Routes>
         <Route path="/" element={<StartPage />} />
         <Route path="/main" element={<MainPage />} />
+        <Route path="/maps" element={<MapsPage />} />
+        <Route path="/comp" element={<CompPage />} />
       </Routes>
     </StrictMode>
   </BrowserRouter>
