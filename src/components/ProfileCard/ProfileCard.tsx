@@ -1,7 +1,5 @@
-import { useEffect, useState } from "react";
 import { Card, CardContent } from "../ui/card";
 import { useStore } from "../zustand/store";
-import { getStats } from "../utils/requests";
 import lvl1 from "../../assets/1.png";
 import lvl2 from "../../assets/2.png";
 import lvl3 from "../../assets/3.png";
@@ -29,17 +27,10 @@ const levelImages: Record<string, string> = {
 };
 
 export const ProfileCard = () => {
-  const { profile, setStats, stats } = useStore((state) => state);
-  useEffect(() => {
-    if (profile && !stats) {
-      getStats(profile["player_id"], setStats);
-    }
-  }, [profile]);
-
+  const { profile } = useStore((state) => state);
   if (!profile) {
     return null;
   }
-
   const cs2Game = profile.games?.cs2;
   const lvl = cs2Game?.skill_level?.toString() || "1";
 

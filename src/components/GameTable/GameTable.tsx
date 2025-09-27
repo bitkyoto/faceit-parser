@@ -46,7 +46,7 @@ export const GameTable = () => {
     }
   };
   useEffect(() => {
-    if (profile && !games) {
+    if (profile) {
       getGames(profile["player_id"], setGames);
     }
   }, [profile]);
@@ -105,11 +105,11 @@ export const GameTable = () => {
     return null;
   }
   return (
-    <div className="dark border rounded-[10px] text-foreground text-center flex flex-col py-2 gap-y-1">
+    <div className="dark border rounded-[10px] text-foreground text-center flex flex-col py-2 gap-y-1 bg-card">
       <Table className="dark m-auto lg:w-200 max-w-4xl">
         <TableHeader>
           <TableRow>
-            <TableHead className="text-center">Date</TableHead>
+            <TableHead className="text-center ">Date</TableHead>
             <TableHead className="text-center">Result</TableHead>
             <TableHead className="text-center">Score</TableHead>
             <TableHead className="text-center">K / A / D</TableHead>

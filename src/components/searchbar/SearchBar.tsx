@@ -25,8 +25,11 @@ export const SearchBar = () => {
 
   useEffect(() => {
     if (response) {
-      setProfile(response);
-      navigate("/main");
+      setProfile({ ...response, id: nickname });
+      // const searchParams = new URLSearchParams({
+      //   player: nickname,
+      // }).toString();
+      navigate("/main?player=" + nickname);
     }
   }, [response, setProfile]);
 

@@ -67,3 +67,17 @@ export const getStatsByMap = (
     })
     .catch((err) => console.error(err));
 };
+
+export const getLeaderBoard = async (
+  region: string,
+  setData: (data: any) => void
+) => {
+  try {
+    const data = await axios.get(
+      `http://localhost:3000/faceit/leaderboard?region=${region}`
+    );
+    setData(data.data);
+  } catch (err) {
+    console.error(err);
+  }
+};

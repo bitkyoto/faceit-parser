@@ -144,7 +144,7 @@ export const MapTable = () => {
   };
 
   return (
-    <div className="dark border rounded-[10px] text-foreground text-center flex flex-col py-2 gap-y-1">
+    <div className="dark border rounded-[10px] text-foreground text-center flex flex-col py-2 gap-y-1  bg-card">
       <Table className="lg:w-200">
         <TableHeader>
           <TableRow>

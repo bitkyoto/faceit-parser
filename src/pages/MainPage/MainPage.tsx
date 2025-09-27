@@ -1,20 +1,35 @@
 import { GameTable } from "@/components/GameTable/GameTable";
-import { MapTable } from "@/components/MapTable/MapTable";
 import { Navbar } from "@/components/Navbar/Navbar";
 import { ProfileCard } from "@/components/ProfileCard/ProfileCard";
-import { getStatsByMap } from "@/components/utils/requests";
+import {
+  findPlayer,
+  getStats,
+} from "@/components/utils/requests";
 import { useStore } from "@/components/zustand/store";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useSearchParams } from "react-router";
 
 export const MainPage = () => {
-  const { profile, setMapStats, mapStats } = useStore((store) => store);
+  const { setProfile, profile, setStats } =
+    useStore((store) => store);
+  const [searchParams] = useSearchParams();
+  const id = searchParams.get("player");
+
   useEffect(() => {
-    if (profile && !mapStats) {
-      getStatsByMap(profile["player_id"], setMapStats);
+    if (!id) return;
+    if (!profile || profile.id !== id) {
+      findPlayer(id, setProfile);
+    }
+  }, [id]);
+
+  useEffect(() => {
+    if (profile) {
+      getStats(profile.player_id, setStats);
     }
   }, [profile]);
+
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center ">
       <div className="w-full mt-4 flex flex-col gap-y-4">
         <div className="flex justify-center items-center">
           <Navbar />

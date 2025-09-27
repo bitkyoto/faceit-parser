@@ -16,6 +16,7 @@ interface PlayerInfractions {
 }
 
 export interface Profile {
+  id: string;
   activated_at: string;
   avatar: string;
   country: string;
