@@ -131,20 +131,26 @@ export const MapTable = () => {
           {map.stats["Average K/D Ratio"]}
         </TableCell>
         <TableCell
-          className={handleColors("KR", map.stats["Average K/R Ratio"])}
+          className={
+            handleColors("KR", map.stats["Average K/R Ratio"]) +
+            " " +
+            "hidden sm:table-cell"
+          }
         >
           {map.stats["Average K/R Ratio"]}
         </TableCell>
         <TableCell className={handleColors("ADR", map.stats.ADR)}>
           {map.stats.ADR}
         </TableCell>
-        <TableCell>{map.stats["Average Headshots %"]}</TableCell>
+        <TableCell className="hidden sm:table-cell">
+          {map.stats["Average Headshots %"]}
+        </TableCell>
       </TableRow>
     ));
   };
 
   return (
-    <div className="dark border rounded-[10px] text-foreground text-center flex flex-col py-2 gap-y-1  bg-card">
+    <div className="dark border rounded-[10px] text-foreground text-center flex flex-col py-2 gap-y-1 bg-card">
       <Table className="lg:w-200">
         <TableHeader>
           <TableRow>
@@ -168,7 +174,7 @@ export const MapTable = () => {
               Average K/D
             </TableHead>
             <TableHead
-              className="text-center cursor-pointer"
+              className="hidden sm:table-cell text-center cursor-pointer"
               onClick={() => sortByColumn("KR")}
             >
               Average K/R
@@ -180,7 +186,7 @@ export const MapTable = () => {
               ADR
             </TableHead>
             <TableHead
-              className="text-center cursor-pointer"
+              className="hidden sm:table-cell text-center cursor-pointer"
               onClick={() => sortByColumn("HS")}
             >
               HS%

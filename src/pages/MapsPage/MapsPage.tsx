@@ -1,11 +1,7 @@
 import { MapTable } from "@/components/MapTable/MapTable";
 import { Navbar } from "@/components/Navbar/Navbar";
 import { ProfileCard } from "@/components/ProfileCard/ProfileCard";
-import {
-  findPlayer,
-  getStats,
-  getStatsByMap,
-} from "@/components/utils/requests";
+import { findPlayer, getStats, getStatsByMap } from "@/utils/requests";
 import { useStore } from "@/components/zustand/store";
 import { useEffect } from "react";
 import { useSearchParams } from "react-router";
@@ -30,15 +26,13 @@ export const MapsPage = () => {
     }
   }, [profile]);
   return (
-    <div className="flex flex-col items-center">
-      <div className="w-full mt-4 flex flex-col gap-y-4">
-        <div className="flex justify-center items-center">
-          <Navbar />
-        </div>
-        <div className="flex flex-col items-center gap-5 lg:flex-row lg:justify-center lg:items-start">
-          <ProfileCard />
-          <MapTable />
-        </div>
+    <div className="w-full mt-4 flex flex-col gap-y-4">
+      <div className="flex justify-center">
+        <Navbar />
+      </div>
+      <div className="flex flex-col items-center gap-5 lg:flex-row lg:justify-center lg:items-start">
+        <ProfileCard />
+        <MapTable />
       </div>
     </div>
   );

@@ -3,13 +3,13 @@ import { Card, CardContent, CardDescription, CardHeader } from "../ui/card";
 import { useStore } from "../zustand/store";
 import { Table, TableBody, TableCell, TableRow } from "../ui/table";
 import user from "../../assets/user.png";
-import { EnemySearchbar } from "../searchbar/EnemySearchbar";
-import type { Stats } from "@/types/Stats";
+import { EnemySearchbar } from "../Searchbar/EnemySearchbar";
+import type { StatsWithAvatarAndNickname } from "@/types/Stats";
 
 export const CompCard = () => {
   const { profile, stats } = useStore((store) => store);
   const [enemyStats, setEnemyStats] = useState<
-    (Stats & { avatar: string; nickname: string }) | undefined
+    StatsWithAvatarAndNickname | undefined
   >();
   const betterStatStyle = "drop-shadow-sm drop-shadow-white";
 
@@ -17,11 +17,24 @@ export const CompCard = () => {
     if (!stat) return 0;
     return parseFloat(stat);
   };
-
+  if (!stats) {
+    return (
+      <>
+        <Card className="dark">
+          <CardContent>
+            <div className="text-white">
+              {" "}
+              Произошла ошибка загрузки статистики!
+            </div>
+          </CardContent>
+        </Card>
+      </>
+    );
+  }
   return (
     <>
       <EnemySearchbar setEnemyStats={setEnemyStats} />
-      <Card className="dark w-300 text-center gap-2">
+      <Card className="dark lg:w-200 text-center gap-2 px-2">
         <CardHeader>
           Сравнение {profile?.nickname} и{" "}
           {enemyStats ? enemyStats.nickname : "-"}
@@ -31,11 +44,11 @@ export const CompCard = () => {
           <img
             src={profile?.avatar}
             alt="avatar"
-            className="w-25 rounded-full"
+            className="w-25 rounded-full hidden sm:block"
           />
-          <div className="border rounded-[10px] w-125 p-2">
+          <div className="border rounded-[10px] p-2">
             {profile && stats && (
-              <Table className="">
+              <Table>
                 <TableBody>
                   <TableRow>
                     <TableCell className="text-left w-1/3">
@@ -137,7 +150,7 @@ export const CompCard = () => {
           <img
             src={enemyStats ? enemyStats?.avatar : user}
             alt="avatar"
-            className="w-25 rounded-full"
+            className="w-25 rounded-full hidden sm:block"
           />
         </CardContent>
       </Card>

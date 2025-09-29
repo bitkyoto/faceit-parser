@@ -5,3 +5,7 @@ export interface Stats {
   KR: string;
   Winrate: string;
 }
+export interface StatsWithAvatarAndNickname extends Stats {
+  avatar: string;
+  nickname: string;
+}

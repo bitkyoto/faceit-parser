@@ -42,11 +42,11 @@ export const ProfileCard = () => {
   };
 
   return (
-    <Card className="max-w-[700px] dark">
+    <Card className="dark">
       <CardContent>
         <div className="flex gap-x-20">
           <div className="flex flex-col items-center justify-center">
-            <div>{profile.nickname}</div>
+            {profile.nickname}
             <div className="relative">
               <img
                 src={profile.avatar ? profile.avatar : user}
@@ -61,7 +61,7 @@ export const ProfileCard = () => {
               />
             </div>
           </div>
-          <div className="flex-1 flex flex-col border-[1px] rounded-[10px]">
+          <div className="flex-1 flex flex-col border rounded-[10px]">
             <span className="text-center py-2">Статистика</span>
             <StatsTable />
           </div>

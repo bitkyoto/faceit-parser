@@ -7,7 +7,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { getLeaderBoard } from "@/components/utils/requests";
+import { getLeaderBoard } from "@/utils/requests";
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router";
 
@@ -25,26 +25,24 @@ export const LeaderboardPage = () => {
     getLeaderBoard(selectedRegion, setData);
   }, [selectedRegion]);
   return (
-    <div className="flex flex-col items-center ">
-      <div className="w-full mt-4 flex flex-col gap-y-4">
-        <div className="flex justify-center items-center">
-          <Navbar />
-        </div>
-        <div className="flex flex-col items-center gap-y-4">
-          <Select
-            value={selectedRegion}
-            onValueChange={(value) => setSelectedRegion(value)}
-          >
-            <SelectTrigger className="w-[180px] dark bg-card text-white">
-              <SelectValue placeholder="Region" />
-            </SelectTrigger>
-            <SelectContent className="dark">
-              <SelectItem value="EU">EU</SelectItem>
-              <SelectItem value="NA">NA</SelectItem>
-            </SelectContent>
-          </Select>
-          <LeaderBoardTable data={data} />
-        </div>
+    <div className="w-full mt-4 flex flex-col gap-y-4">
+      <div className="flex justify-center">
+        <Navbar />
+      </div>
+      <div className="flex flex-col items-center gap-y-4">
+        <Select
+          value={selectedRegion}
+          onValueChange={(value) => setSelectedRegion(value)}
+        >
+          <SelectTrigger className="w-[180px] dark bg-card text-white">
+            <SelectValue placeholder="Region" />
+          </SelectTrigger>
+          <SelectContent className="dark">
+            <SelectItem value="EU">EU</SelectItem>
+            <SelectItem value="NA">NA</SelectItem>
+          </SelectContent>
+        </Select>
+        <LeaderBoardTable data={data} />
       </div>
     </div>
   );

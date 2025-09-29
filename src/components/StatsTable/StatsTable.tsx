@@ -1,5 +1,4 @@
 import { useStore } from "../zustand/store";
-import { getAdr, getAvg, getKd, getKr, getWinrate } from "../utils/utils";
 import {
   Table,
   TableHeader,
@@ -44,7 +43,7 @@ export const StatsTable = () => {
       </div>
 
       {/* Вертикальные карточки для маленьких экранов */}
-      <div className="md:hidden grid grid-cols-2 gap-2">
+      <div className="md:hidden grid grid-cols-2 gap-2 p-2">
         <div className="bg-secondary p-2 rounded-lg text-center">
           <div className="text-sm text-muted-foreground">Winrate</div>
           <div className="font-medium">{stats.Winrate}</div>
