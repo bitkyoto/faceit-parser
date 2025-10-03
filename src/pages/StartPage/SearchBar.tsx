@@ -2,7 +2,7 @@ import { useEffect, useState, type KeyboardEvent } from "react";
 import "./SearchBar.css";
 import { Search } from "lucide-react";
 import { findPlayer } from "@/utils/requests";
-import { useStore } from "../zustand/store";
+import { useStore } from "../../components/zustand/store";
 import { useNavigate } from "react-router";
 
 export const SearchBar = () => {

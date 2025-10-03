@@ -1,0 +1,25 @@
+.searchbar__container {
+  max-width: 600px;
+  width: 70%;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid grey;
+  padding: 10px 20px;
+  border-radius: 20px;
+  height: 75px;
+}
+.searchbar__input {
+  background-color: inherit;
+  flex-grow: 1;
+  color: white;
+}
+.searchbar__input:focus {
+  outline: none;
+}
+.enemy_searchbar__container {
+  border: 1px solid grey;
+  border-radius: 20px;
+  padding: 10px 20px;
+}

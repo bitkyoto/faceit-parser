@@ -2,10 +2,10 @@ import { Search } from "lucide-react";
 import { useState, type KeyboardEvent } from "react";
 import { findEnemyAndGetStats } from "@/utils/requests";
 import "../Searchbar/SearchBar.css";
-import type { Stats } from "@/types/Stats";
+import type { StatsWithAvatarAndNickname } from "@/types/Stats";
 
 interface EnemySearchbarProps {
-  setEnemyStats: (stats: Stats & { avatar: string; nickname: string }) => void;
+  setEnemyStats: (stats: StatsWithAvatarAndNickname) => void;
 }
 
 export const EnemySearchbar = ({ setEnemyStats }: EnemySearchbarProps) => {

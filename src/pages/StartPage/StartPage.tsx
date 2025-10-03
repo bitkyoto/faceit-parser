@@ -1,4 +1,5 @@
-import { SearchBar } from "../../components/Searchbar/SearchBar";
+import "./SearchBar.css";
+import { SearchBar } from "./SearchBar";
 
 export const StartPage = () => {
   return (
