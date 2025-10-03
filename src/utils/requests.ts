@@ -5,7 +5,7 @@ export const findPlayer = async (
   setResponse: (response: any) => void
 ) => {
   try {
-    const url = `http://localhost:3000/faceit/player/`;
+    const url = `http://faceit-parser-backend.vercel.app/faceit/player/`;
     const response = await axios.get(url, { params: { q: identifier } });
     setResponse(response.data);
   } catch (error) {
@@ -17,7 +17,7 @@ export const findEnemyAndGetStats = async (
   setResponse: (response: any) => void
 ) => {
   try {
-    const url = `http://localhost:3000/faceit/player/`;
+    const url = `http://faceit-parser-backend.vercel.app/faceit/player/`;
     const response = await axios.get(url, { params: { q: identifier } });
     getStatsAndAvatar(
       response.data.player_id,
@@ -35,7 +35,7 @@ export const getStats = async (
   setResponse: (response: any) => void
 ) => {
   try {
-    const url = `http://localhost:3000/faceit/stats/${player_id}`;
+    const url = `http://faceit-parser-backend.vercel.app/faceit/stats/${player_id}`;
     const response = await axios.get(url);
     setResponse(response.data);
   } catch (err) {
@@ -47,7 +47,7 @@ export const getGames = async (
   setResponse: (response: any) => void
 ) => {
   try {
-    const url = `http://localhost:3000/faceit/games/${player_id}`;
+    const url = `http://faceit-parser-backend.vercel.app/faceit/games/${player_id}`;
     const response = await axios.get(url);
     setResponse(response.data);
   } catch (err) {
@@ -61,7 +61,7 @@ export const getStatsAndAvatar = async (
   nickname: string
 ) => {
   try {
-    const url = `http://localhost:3000/faceit/stats/${player_id}`;
+    const url = `http://faceit-parser-backend.vercel.app/faceit/stats/${player_id}`;
     const response = await axios.get(url);
     const ndata = response.data;
     ndata.avatar = avatar;
@@ -78,7 +78,7 @@ export const getStatsByMap = async (
 ) => {
   try {
     const response = await axios.get(
-      `http://localhost:3000/faceit/mapstats/${player_id}`
+      `http://faceit-parser-backend.vercel.app/faceit/mapstats/${player_id}`
     );
     setMapData(response.data);
   } catch (error) {
@@ -92,7 +92,7 @@ export const getLeaderBoard = async (
 ) => {
   try {
     const data = await axios.get(
-      `http://localhost:3000/faceit/leaderboard?region=${region}`
+      `http://faceit-parser-backend.vercel.app/faceit/leaderboard?region=${region}`
     );
     setData(data.data);
   } catch (err) {
