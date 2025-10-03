@@ -5,7 +5,7 @@ import { Table, TableBody, TableCell, TableRow } from "../ui/table";
 import user from "../../assets/user.png";
 
 import type { StatsWithAvatarAndNickname } from "@/types/Stats";
-import { EnemySearchbar } from "../Searchbar/EnemySearchbar";
+import { EnemySearchbar } from "../EnemySearchbar/EnemySearchbar";
 
 export const CompCard = () => {
   const { profile, stats } = useStore((store) => store);
