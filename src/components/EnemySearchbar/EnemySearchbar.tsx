@@ -1,7 +1,7 @@
 import { Search } from "lucide-react";
 import { useState, type KeyboardEvent } from "react";
 import { findEnemyAndGetStats } from "@/utils/requests";
-import "../Searchbar/SearchBar.css";
+import "@/components/Searchbar/searchbar.css";
 import type { StatsWithAvatarAndNickname } from "@/types/Stats";
 
 interface EnemySearchbarProps {
