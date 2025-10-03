@@ -1,5 +1,5 @@
 import type { Games } from "@/types/Games";
-import type { Profile } from "@/types/profile";
+import type { Profile } from "@/types/Profile";
 import type { Stats } from "@/types/Stats";
 
 import { create } from "zustand";

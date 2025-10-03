@@ -1,4 +1,3 @@
-import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import { BrowserRouter, Route, Routes } from "react-router";
@@ -10,7 +9,6 @@ import { LeaderboardPage } from "./pages/LeaderboardPage/LeaderboardPage.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <BrowserRouter>
-    {/* <StrictMode> */}
     <Routes>
       <Route path="/" element={<StartPage />} />
       <Route path="/main" element={<MainPage />} />
@@ -18,6 +16,5 @@ createRoot(document.getElementById("root")!).render(
       <Route path="/comp" element={<CompPage />} />
       <Route path="/leaderboard" element={<LeaderboardPage />} />
     </Routes>
-    {/* </StrictMode> */}
   </BrowserRouter>
 );
