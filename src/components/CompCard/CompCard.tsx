@@ -3,8 +3,9 @@ import { Card, CardContent, CardDescription, CardHeader } from "../ui/card";
 import { useStore } from "../zustand/store";
 import { Table, TableBody, TableCell, TableRow } from "../ui/table";
 import user from "../../assets/user.png";
-import { EnemySearchbar } from "../Searchbar/EnemySearchbar";
+
 import type { StatsWithAvatarAndNickname } from "@/types/Stats";
+import { EnemySearchbar } from "../Searchbar/EnemySearchbar";
 
 export const CompCard = () => {
   const { profile, stats } = useStore((store) => store);
