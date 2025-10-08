@@ -3,20 +3,20 @@ import { Navbar } from "@/components/Navbar/Navbar";
 import { ProfileCard } from "@/components/ProfileCard/ProfileCard";
 import { findPlayer, getStats, getStatsByMap } from "@/utils/requests";
 import { useStore } from "@/components/zustand/store";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router";
 
 export const MapsPage = () => {
   const { setProfile, profile, setMapStats, setStats } = useStore(
     (store) => store
   );
+  const [error, setError] = useState(undefined);
   const [searchParams] = useSearchParams();
   const id = searchParams.get("player");
-
   useEffect(() => {
     if (!id) return;
     if (!profile || profile.id !== id) {
-      findPlayer(id, setProfile);
+      findPlayer(id, setProfile, setError);
     }
   }, [id]);
   useEffect(() => {
