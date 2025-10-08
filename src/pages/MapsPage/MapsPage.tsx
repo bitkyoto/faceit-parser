@@ -32,7 +32,10 @@ export const MapsPage = () => {
       </div>
       <div className="flex flex-col items-center gap-5 lg:flex-row lg:justify-center lg:items-start">
         <ProfileCard />
-        <MapTable />
+        {error && (
+          <div className="text-destructive">Не удалось найти игрока</div>
+        )}
+        {!error && <MapTable />}
       </div>
     </div>
   );
