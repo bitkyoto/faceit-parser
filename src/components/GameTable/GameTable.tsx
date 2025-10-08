@@ -82,13 +82,23 @@ export const GameTable = () => {
           <TableCell className={handleColors("Result", game.stats["Result"])}>
             {formatResult(game.stats["Result"])}
           </TableCell>
-          <TableCell className={handleColors("Result", game.stats["Result"])}>
+          <TableCell
+            className={
+              "hidden sm:table-cell" +
+              handleColors("Result", game.stats["Result"])
+            }
+          >
             {game.stats["Score"]}
           </TableCell>
           <TableCell>
             {`${game.stats["Kills"]} / ${game.stats["Assists"]} / ${game.stats["Deaths"]}`}
           </TableCell>
-          <TableCell className={handleColors("K/D", game.stats["K/D Ratio"])}>
+          <TableCell
+            className={
+              "hidden sm:table-cell" +
+              handleColors("K/D", game.stats["K/D Ratio"])
+            }
+          >
             {game.stats["K/D Ratio"]}
           </TableCell>
           <TableCell className="hidden sm:table-cell">
@@ -117,9 +127,13 @@ export const GameTable = () => {
           <TableRow>
             <TableHead className="text-center">Date</TableHead>
             <TableHead className="text-center">Result</TableHead>
-            <TableHead className="text-center">Score</TableHead>
+            <TableHead className="text-center hidden sm:table-cell">
+              Score
+            </TableHead>
             <TableHead className="text-center">K / A / D</TableHead>
-            <TableHead className="text-center">K/D</TableHead>
+            <TableHead className="text-center hidden sm:table-cell">
+              K/D
+            </TableHead>
             <TableHead className="text-center hidden sm:table-cell">
               K/R
             </TableHead>

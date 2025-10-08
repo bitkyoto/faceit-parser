@@ -44,7 +44,7 @@ export const ProfileCard = () => {
   return (
     <Card className="dark">
       <CardContent>
-        <div className="flex gap-x-20">
+        <div className="flex gap-x-10 sm:gap-x-20">
           <div className="flex flex-col items-center justify-center">
             {profile.nickname}
             <div className="relative">
