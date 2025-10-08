@@ -2,13 +2,15 @@ import axios from "axios";
 
 export const findPlayer = async (
   identifier: string,
-  setResponse: (response: any) => void
+  setResponse: (response: any) => void,
+  setError: (error: any) => void
 ) => {
   try {
     const url = `https://faceit-parser-backend.vercel.app/faceit/player/`;
     const response = await axios.get(url, { params: { q: identifier } });
     setResponse(response.data);
   } catch (error) {
+    setError(error);
     console.error(error);
   }
 };
