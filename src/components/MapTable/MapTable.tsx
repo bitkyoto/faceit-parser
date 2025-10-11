@@ -139,7 +139,11 @@ export const MapTable = () => {
         >
           {map.stats["Average K/R Ratio"]}
         </TableCell>
-        <TableCell className={handleColors("ADR", map.stats.ADR)}>
+        <TableCell
+          className={
+            "hidden sm:table-cell " + handleColors("ADR", map.stats.ADR)
+          }
+        >
           {map.stats.ADR}
         </TableCell>
         <TableCell className="hidden sm:table-cell">
@@ -180,7 +184,7 @@ export const MapTable = () => {
               Average K/R
             </TableHead>
             <TableHead
-              className="text-center cursor-pointer"
+              className="hidden sm:table-cell text-center cursor-pointer"
               onClick={() => sortByColumn("ADR")}
             >
               ADR
