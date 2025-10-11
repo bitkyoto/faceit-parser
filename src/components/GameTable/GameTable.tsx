@@ -84,7 +84,7 @@ export const GameTable = () => {
           </TableCell>
           <TableCell
             className={
-              "hidden sm:table-cell" +
+              "hidden sm:table-cell " +
               handleColors("Result", game.stats["Result"])
             }
           >
@@ -95,7 +95,7 @@ export const GameTable = () => {
           </TableCell>
           <TableCell
             className={
-              "hidden sm:table-cell" +
+              "hidden sm:table-cell " +
               handleColors("K/D", game.stats["K/D Ratio"])
             }
           >
