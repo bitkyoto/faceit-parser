@@ -22,7 +22,7 @@ import { getGames } from "@/utils/requests";
 type Column = "Result" | "Score" | "K/D";
 
 export const GameTable = () => {
-  const { profile, games, setGames } = useStore((store) => store);
+  const { profile, games, setGames, addGames } = useStore((store) => store);
   const [page, setPage] = useState<number>(0);
   const itemsPerPage = 20;
 
@@ -47,10 +47,21 @@ export const GameTable = () => {
   };
   useEffect(() => {
     if (profile) {
-      getGames(profile["player_id"], setGames);
+      getGames(profile["player_id"], page, setGames);
     }
   }, [profile]);
-
+  useEffect(() => {
+    if (page === 4) {
+      if (profile) {
+        getGames(profile["player_id"], 1, addGames);
+      }
+    }
+    if (page === 9) {
+      if (profile) {
+        getGames(profile["player_id"], 2, addGames);
+      }
+    }
+  }, [page]);
   const totalPages = games?.items
     ? Math.ceil(games.items.length / itemsPerPage)
     : 0;
@@ -161,7 +172,7 @@ export const GameTable = () => {
             />
           </PaginationItem>
           <PaginationItem>
-            <PaginationLink isActive>
+            <PaginationLink isActive className="w-20">
               {page + 1} / {totalPages}
             </PaginationLink>
           </PaginationItem>

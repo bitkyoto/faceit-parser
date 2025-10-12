@@ -13,6 +13,7 @@ interface ProfileState {
   setGames: (games: any) => void;
   setMapStats: (stats: any) => void;
   setStats: (stats: any) => void;
+  addGames: (newGames: any) => void;
 }
 
 export const useStore = create<ProfileState>((set) => ({
@@ -21,7 +22,27 @@ export const useStore = create<ProfileState>((set) => ({
   mapStats: undefined,
   stats: undefined,
   setProfile: (profile) => set({ profile }),
-  setGames: (games: any) => set({ games }),
+  setGames: (ngames: any) => set({ games: ngames }),
   setMapStats: (mapStats: any) => set({ mapStats }),
   setStats: (stats: Stats) => set({ stats }),
+  addGames: (newGames: any) =>
+    set((state) => {
+      if (!state.games) {
+        return {
+          games: {
+            start: 0,
+            end: newGames.end,
+            items: newGames.items,
+          },
+        };
+      }
+
+      return {
+        games: {
+          start: 0,
+          items: [...state.games.items, ...newGames.items],
+          end: newGames.end,
+        },
+      };
+    }),
 }));

@@ -11,7 +11,6 @@ export const findPlayer = async (
     setResponse(response.data);
   } catch (error) {
     setError(error);
-    console.error(error);
   }
 };
 export const findEnemyAndGetStats = async (
@@ -27,9 +26,7 @@ export const findEnemyAndGetStats = async (
       response.data.avatar,
       response.data.nickname
     );
-  } catch (error) {
-    console.error(error);
-  }
+  } catch (error) {}
 };
 
 export const getStats = async (
@@ -40,21 +37,18 @@ export const getStats = async (
     const url = `https://faceit-parser-backend.vercel.app/faceit/stats/${player_id}`;
     const response = await axios.get(url);
     setResponse(response.data);
-  } catch (err) {
-    console.error(err);
-  }
+  } catch (err) {}
 };
 export const getGames = async (
   player_id: string,
+  page: number,
   setResponse: (response: any) => void
 ) => {
   try {
-    const url = `https://faceit-parser-backend.vercel.app/faceit/games/${player_id}`;
+    const url = `https://faceit-parser-backend.vercel.app/faceit/games/${player_id}?page=${page}`;
     const response = await axios.get(url);
     setResponse(response.data);
-  } catch (err) {
-    console.error(err);
-  }
+  } catch (err) {}
 };
 export const getStatsAndAvatar = async (
   player_id: string,
@@ -69,9 +63,7 @@ export const getStatsAndAvatar = async (
     ndata.avatar = avatar;
     ndata.nickname = nickname;
     setResponse(ndata);
-  } catch (error) {
-    console.error(error);
-  }
+  } catch (error) {}
 };
 
 export const getStatsByMap = async (
@@ -83,9 +75,7 @@ export const getStatsByMap = async (
       `https://faceit-parser-backend.vercel.app/faceit/mapstats/${player_id}`
     );
     setMapData(response.data);
-  } catch (error) {
-    console.error(error);
-  }
+  } catch (error) {}
 };
 
 export const getLeaderBoard = async (
@@ -97,7 +87,5 @@ export const getLeaderBoard = async (
       `https://faceit-parser-backend.vercel.app/faceit/leaderboard?region=${region}`
     );
     setData(data.data);
-  } catch (err) {
-    console.error(err);
-  }
+  } catch (err) {}
 };
