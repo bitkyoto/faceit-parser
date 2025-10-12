@@ -45,8 +45,8 @@ export const getGames = async (
   setResponse: (response: any) => void
 ) => {
   try {
-    const url = `https://faceit-parser-backend.vercel.app/faceit/games/${player_id}?page=${page}`;
-    const response = await axios.get(url);
+    const url = `https://faceit-parser-backend.vercel.app/faceit/games/${player_id}`;
+    const response = await axios.get(url, { params: { page: page } });
     setResponse(response.data);
   } catch (err) {}
 };
