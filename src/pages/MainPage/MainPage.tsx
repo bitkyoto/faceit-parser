@@ -5,6 +5,7 @@ import { findPlayer, getStats } from "@/utils/requests";
 import { useStore } from "@/components/zustand/store";
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router";
+import WidgetButton from "@/components/Widget/WidgetButton";
 
 export const MainPage = () => {
   const { setProfile, profile, setStats } = useStore((store) => store);
@@ -32,7 +33,10 @@ export const MainPage = () => {
         {error && (
           <div className="text-destructive">Не удалось найти игрока</div>
         )}
-        <ProfileCard />
+        <div className="flex flex-col gap-y-4">
+          <ProfileCard />
+          <WidgetButton />
+        </div>
         <GameTable />
       </div>
     </div>

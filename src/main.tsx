@@ -6,15 +6,17 @@ import { MainPage } from "./pages/MainPage/MainPage.tsx";
 import { CompPage } from "./pages/ComparisonPage/CompPage.tsx";
 import { MapsPage } from "./pages/MapsPage/MapsPage.tsx";
 import { LeaderboardPage } from "./pages/LeaderboardPage/LeaderboardPage.tsx";
+import WidgetPage from "./pages/WidgetPage/WidgetPage.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <BrowserRouter>
     <Routes>
-      <Route path="/" element={<StartPage />} />
-      <Route path="/main" element={<MainPage />} />
-      <Route path="/maps" element={<MapsPage />} />
-      <Route path="/comp" element={<CompPage />} />
+      <Route path="/"            element={<StartPage />} />
+      <Route path="/main"        element={<MainPage />} />
+      <Route path="/maps"        element={<MapsPage />} />
+      <Route path="/comp"        element={<CompPage />} />
       <Route path="/leaderboard" element={<LeaderboardPage />} />
+      <Route path="/widget"      element={<WidgetPage/>} />
     </Routes>
   </BrowserRouter>
 );

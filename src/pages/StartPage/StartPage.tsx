@@ -6,6 +6,7 @@ export const StartPage = () => {
       <div className="h-screen flex items-center justify-center">
         <SearchBar />
       </div>
+      
     </>
   );
 };
