@@ -33,10 +33,13 @@ export const MainPage = () => {
         {error && (
           <div className="text-destructive">Не удалось найти игрока</div>
         )}
-        <div className="flex flex-col gap-y-4">
-          <ProfileCard />
-          <WidgetButton />
-        </div>
+        {profile && (
+          <div className="flex flex-col gap-y-4">
+            <ProfileCard />
+            <WidgetButton />
+          </div>
+        )}
+        
         <GameTable />
       </div>
     </div>
